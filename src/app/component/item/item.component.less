@@ -1,0 +1,97 @@
+:host {
+    .todo-item {
+        display: flex;
+        background: #fff;
+        align-items: center;
+        width: 100%;
+        border-bottom: 1px solid #ededed;
+
+        &:hover .todo-item-button-delete {
+            display: block;
+        }
+    }
+
+    .todo-item-checkbox-style {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        appearance: none;
+        opacity: 0;
+        z-index: 1;
+    }
+
+    .todo-item-label {
+        width: 40px;
+        height: 40px;
+
+        label {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+        }
+    }
+
+    .todo-item-checkbox-style+.todo-item-label label {
+        background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');
+        background-repeat: no-repeat;
+        background-position: center left;
+    }
+
+    .todo-item-checkbox-style:checked+.todo-item-label label {
+        background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
+    }
+
+    .todo-item-name-block {
+        width: 100%;
+    }
+
+    .todo-item-name {
+        word-break: break-all;
+        padding: 15px 15px 15px 30px;
+        display: block;
+        font-size: 24px;
+        transition: color 0.4s;
+        border: 1px solid transparent;
+    }
+
+    .todo-item-delete-block {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    .todo-item-button-delete {
+        display: none;
+        font-size: 30px;
+        color: #cc9a9a;
+        margin-bottom: 11px;
+        border: none;
+        appearance: none;
+        background: none;
+
+        :hover {
+            color: #af5b5e;
+        }
+    }
+
+    .todo-item-editing {
+
+        label,
+        .todo-item-delete-block {
+            display: none;
+        }
+
+        .todo-item-name-input {
+            width: 100%;
+            margin-right: 2px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 15px;
+            font-size: 24px;
+            color: inherit;
+            border: 1px solid #999;
+            box-shadow: inset 0 -1px 5px 0 rgb(0 0 0 / 20%);
+            box-sizing: border-box;
+        }
+    }
+}

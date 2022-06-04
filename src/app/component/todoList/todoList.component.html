@@ -1,0 +1,32 @@
+<div class="todo-head">todos</div>
+<div class="todo-checkbox-block" [class.toggle-all-select]="isSelectAll">
+    <input type="checkbox" class="togle-all" [(ngModel)]="isSelectAll" (change)="selectAll()">
+</div>
+<div class="todo-form-all">
+    <form class="todo-form" [formGroup]="addForm" (ngSubmit)="addItem()">
+        <input class="todo-input form-control" formControlName="name" placeholder="What needs to be done?" />
+    </form>
+    <div *ngFor="let item of items">
+        <app-todolist-item [item]="item" (onDelete)="removeItem($event)"
+            (onChecked)="changedChecked($event)" (onChanged)="setChangedItem($event)"></app-todolist-item>
+    </div>
+    <div *ngIf="count" class="todo-footer">
+        <div class="todo-count">
+            {{countActive}} {{countActive === 1 ? 'item' : 'items'}} left
+        </div>
+        <div class="todo-filters-block">
+            <div class="todo-filters-state">
+                <input type="button" class="todo-filters-button" value="All" [class.selected]="activeFilter===''"
+                    (click)="showAll()" />
+                <input type="button" class="todo-filters-button" value="Active"
+                    [class.selected]="activeFilter==='active'" (click)="showActive()" />
+                <input type="button" class="todo-filters-button" value="Completed"
+                    [class.selected]="activeFilter==='completed'" (click)="showCompleted()" />
+            </div>
+            <div class="todo-clear-completed">
+                <input type="button" class="todo-filters-button " value="Clear completed" (click)="clearCompleted()"
+                    [hidden]="count === countActive && !isSelectAll" />
+            </div>
+        </div>
+    </div>
+</div>

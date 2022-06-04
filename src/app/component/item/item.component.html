@@ -1,0 +1,21 @@
+
+<form class="todo-form" [formGroup]="item">
+    <div class="todo-item" [class.todo-item-editing]="isShowInput">
+    <input class="todo-input form-control todo-item-checkbox-style" formControlName="checked" type="checkbox" (change)="checked()">
+    <div class="todo-item-label"> <label> &nbsp;</label> </div>
+    <div *ngIf="!isShowInput else unset" class="todo-item-name-block">
+        <span (dblclick)="dblClicked()" class="todo-item-name" >{{ item.get('name')?.value }} </span>
+    </div>
+    <ng-template #unset>
+        <input setFocus
+               class="todo-input form-control todo-item-name-input"
+               formControlName="name"
+               (change)="changed()"
+               (blur)="onBlur()"
+               (keydown)="onKeyDown($event)"/>
+    </ng-template>
+    <div class="todo-item-delete-block">
+        <input class="todo-item-button-delete" type="button" name="deleteItem" value="×" (click)="deleted()" />
+    </div>
+</div>
+</form>
